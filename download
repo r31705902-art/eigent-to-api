@@ -1,0 +1,10 @@
+*
+!app/
+!app/*.py
+!requirements.txt
+!Dockerfile
+!docker-entrypoint.py
+!app/vendor/
+!app/vendor/*.txt
+!LICENSE
+!NOTICE

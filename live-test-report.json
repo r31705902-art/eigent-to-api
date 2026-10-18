@@ -1,0 +1,166 @@
+{
+  "target": "https://eigent-to-api-production.up.railway.app",
+  "release_under_test": "deployed v0.1; local bounded agent through deployed native endpoints",
+  "checks": [
+    {
+      "method": "GET",
+      "path": "/healthz",
+      "status": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/readyz",
+      "status": 200,
+      "body": {
+        "ready": true
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/auth/status",
+      "status": 200,
+      "body": {
+        "authenticated": true,
+        "refresh_available": false
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/v1/models",
+      "status": 200,
+      "body": {
+        "object": "list",
+        "data": [
+          {
+            "id": "gpt-6-astra",
+            "object": "model",
+            "created": 0,
+            "owned_by": "eigent"
+          },
+          {
+            "id": "gpt-6-sol",
+            "object": "model",
+            "created": 0,
+            "owned_by": "eigent"
+          },
+          {
+            "id": "gpt-6-luna",
+            "object": "model",
+            "created": 0,
+            "owned_by": "eigent"
+          },
+          {
+            "id": "eigent",
+            "object": "model",
+            "created": 0,
+            "owned_by": "eigent"
+          },
+          {
+            "id": "openai/gemini-3.8-flash",
+            "object": "model",
+            "created": 0,
+            "owned_by": "eigent"
+          },
+          {
+            "id": "grok-4-7",
+            "object": "model",
+            "created": 0,
+            "owned_by": "eigent"
+          },
+          {
+            "id": "openai/muse-spark-1.3",
+            "object": "model",
+            "created": 0,
+            "owned_by": "eigent"
+          },
+          {
+            "id": "z-ai/glm-5.3",
+            "object": "model",
+            "created": 0,
+            "owned_by": "eigent"
+          },
+          {
+            "id": "z-ai/glm-5.3-flash",
+            "object": "model",
+            "created": 0,
+            "owned_by": "eigent"
+          },
+          {
+            "id": "qwen/qwen3.8-max",
+            "object": "model",
+            "created": 0,
+            "owned_by": "eigent"
+          },
+          {
+            "id": "moonshotai/kimi-k3",
+            "object": "model",
+            "created": 0,
+            "owned_by": "eigent"
+          },
+          {
+            "id": "minimax/minimax-m3",
+            "object": "model",
+            "created": 0,
+            "owned_by": "eigent"
+          },
+          {
+            "id": "tencent/hy3",
+            "object": "model",
+            "created": 0,
+            "owned_by": "eigent"
+          },
+          {
+            "id": "inclusionai/ling-2.6-1t",
+            "object": "model",
+            "created": 0,
+            "owned_by": "eigent"
+          }
+        ]
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "model": "gpt-6-astra",
+      "status": 403,
+      "body": {
+        "error": {
+          "message": "Eigent model proxy returned HTTP 403. The proxy may enforce agent prompt, plan or access policy; this gateway does not bypass it.",
+          "type": "api_error",
+          "param": null,
+          "code": "eigent_model_http_403"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/v1/responses",
+      "model": "gpt-6-astra",
+      "status": 403,
+      "body": {
+        "error": {
+          "message": "Eigent model proxy returned HTTP 403. The proxy may enforce agent prompt, plan or access policy; this gateway does not bypass it.",
+          "type": "api_error",
+          "param": null,
+          "code": "eigent_model_http_403"
+        }
+      }
+    }
+  ],
+  "agent_responses_probe": {
+    "agent_probe": "rejected",
+    "upstream_status": 403,
+    "upstream_calls": 1,
+    "note": "Original upstream error body is hidden by currently deployed gateway; no guard or permission bypass attempted."
+  },
+  "agent_chat_probe": {
+    "agent_probe": "rejected",
+    "upstream_status": 403,
+    "upstream_calls": 1,
+    "note": "Original upstream error body is hidden by currently deployed gateway; no guard or permission bypass attempted."
+  },
+  "conclusion": "No successful model generation. Original upstream error body unavailable on deployed v0.1. Requires deployment of v0.2 for authenticated diagnostics; root cause unknown."
+}

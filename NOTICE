@@ -1,0 +1,9 @@
+eigent-to-api
+
+Includes Eigent Single Agent prompt text derived from:
+https://github.com/eigent-ai/eigent/blob/8f90b99125e790fb4ccebb472dac7e6a6d1972a9/backend/app/agent/prompt.py
+Copyright 2025-2026 Eigent.ai. Licensed under Apache License 2.0.
+
+The bounded headless agent loop, protocol adapters and managed tools in this
+project are an independent implementation, NOT the CAMEL/ListenChatAgent runtime,
+not the full Eigent Workforce, and not endorsed by Eigent.ai.

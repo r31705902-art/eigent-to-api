@@ -7,6 +7,7 @@ RUN pip install --no-cache-dir -r requirements.txt \
     && useradd --uid 10001 --gid 10001 --create-home gateway \
     && mkdir -p /data/session && chown -R gateway:gateway /data/session
 COPY app ./app
+COPY LICENSE NOTICE ./
 COPY docker-entrypoint.py ./docker-entrypoint.py
 EXPOSE 8080
 CMD ["python", "docker-entrypoint.py"]
