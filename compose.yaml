@@ -1,0 +1,11 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+    env_file: .env
+    volumes:
+      - session:/data/session
+    restart: unless-stopped
+volumes:
+  session:
